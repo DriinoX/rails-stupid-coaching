@@ -1,15 +1,13 @@
 class PagesController < ApplicationController
-  def about
-  end
-
-  def contact
-    @members = ['thanh', 'dimitri', 'germain', 'damien', 'julien']
-
-    if params[:member]
-      @members = @members.select { |member| member.start_with?(params[:member].downcase)}
+  def ask
+    if params[:question]
+      if params[:question] == 'I am going to work'
+        @answer = 'Great!'
+      elsif params[:question].end_with?('?')
+        @answer = 'Silly question, get dressed and go to work!'
+      else
+        @answer = "I don't care, get dressed and go to work!"
+      end
     end
-  end
-
-  def home
   end
 end
